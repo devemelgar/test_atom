@@ -28,13 +28,13 @@ export default class TaskRepository {
         const db = DbConnection.getConnection();
         const docRef = db.collection(DB_COLLECTION_TASK);
 
-        task = {
+        const taskNew: ITask = {
+            descripcion: task.descripcion,
             estado: EnumEstadoTask.ESTADO_TASK_PENDIENTE,
             fechaRegistro: Timestamp.fromDate(new Date()),
-            ...task,
         };
 
-        return docRef.add(task);
+        return docRef.add(taskNew);
     }
 
     static updateTask(id: string, task: ITask) {
@@ -42,9 +42,8 @@ export default class TaskRepository {
         const docRef = db.collection(DB_COLLECTION_TASK).doc(id);
 
         task = {
-            descripcion: task.descripcion,
-            estado: task.estado,
             fechaActualizacion: Timestamp.fromDate(new Date()),
+            ...task,
         };
 
         return docRef.set(task, { merge: true });
