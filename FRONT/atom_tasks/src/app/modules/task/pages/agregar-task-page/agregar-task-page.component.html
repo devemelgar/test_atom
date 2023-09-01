@@ -1,0 +1,17 @@
+<form autocomplete="off" [formGroup]="formTask" (ngSubmit)="guardar()">
+    <div class="p-fluid m-3">
+        <div class="p-field pb-3">
+            <label for="descripcion">Descripción</label>
+            <input pInputText id="descripcion" type="text" formControlName="descripcion" autofocus />
+            <small class="p-error" *ngIf="validarCampos('descripcion')">
+                Debe de ser de 5 letras
+            </small>
+        </div>
+        <hr />
+    </div>
+    <div class="flex flex-row justify-content-between m-3">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="flex p-button-danger w-auto" type="button"
+        (click)="cancelar()"></button>
+        <button pButton pRipple label="Guardar" icon="pi pi-save" class="flex mr-2 w-auto" type="submit"></button>
+    </div>
+</form>

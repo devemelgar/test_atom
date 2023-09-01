@@ -1,0 +1,28 @@
+<p-dialog *ngIf="displayAgregar" [header]="tituloDialog" [modal]="true" [(visible)]="displayAgregar"  styleClass="p-fluid">
+    <app-agregar-task-page (cerrarModal)="cerrarDialogAgregar()" [task]="itemSeleccionado"></app-agregar-task-page>
+</p-dialog>
+
+<p-button label="Agregar" icon="pi pi-plus" class="flex justify-content-end p-3" styleClass="p-button-warning" (onClick)="showDialogAgregar()"></p-button>
+<div id="contenedor" class="grid m-5">
+    <div class="container-item xs:col-12 sm:col-12 md:col-12 lg:col-5">
+        <h2 class="px-3">PENDIENTES</h2>
+        <div *ngFor="let task of tasksPendientes; let i = index">
+            <app-item-task [task]="task" 
+                (accionBotonEliminar)="eliminarTask(i)" 
+                (accionBotonConfirmar)="confirmarTask(i)" 
+                (accionBotonEditar)="editarTask(i)">
+            </app-item-task>
+        </div>
+    </div>
+    <div class="container-item xs:col-12 sm:col-12 md:col-12 lg:col-2"></div>
+    <div class="container-item xs:col-12 sm:col-12 md:col-12 lg:col-5">
+        <h2 class="px-3">COMPLETADOS</h2>
+        <div *ngFor="let task of tasksCompletos; let i = index">
+            <app-item-task [task]="task" 
+                (accionBotonEliminar)="eliminarTask(i)" 
+                (accionBotonConfirmar)="confirmarTask(i)" 
+                (accionBotonEditar)="editarTask(i)">
+            </app-item-task>
+        </div>
+    </div>
+</div>

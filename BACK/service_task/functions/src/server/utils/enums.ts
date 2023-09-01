@@ -1,4 +1,4 @@
 export enum EnumEstadoTask {
-    ESTADO_TASK_PENDIENTE,
-    ESTADO_TASK_COMPLETO
+    ESTADO_TASK_PENDIENTE = 'P',
+    ESTADO_TASK_COMPLETO = 'C'
 }

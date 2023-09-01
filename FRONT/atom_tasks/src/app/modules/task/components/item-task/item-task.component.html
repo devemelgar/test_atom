@@ -1,0 +1,12 @@
+<div class="grid card-item m-3">
+    <div class="xs:col-1 sm:col-1 md:col-1 lg:col-1 flex justify-content-center align-items-center" *ngIf="task?.estado == 'P'">
+        <p-toggleButton onIcon="pi pi-check" offIcon="pi pi-times" [style]="{ width: '2em', height: '2em' }" class="tbCustom" (onChange)="confirmar()"></p-toggleButton>
+    </div>
+    <div class="col flex align-items-center text-lg">
+        {{ task?.descripcion }}
+    </div>
+    <div class="xs:col-2 sm:col-2 md:col-2 lg:col-2 flex flex-column" *ngIf="task?.estado == 'P'">
+        <p-button icon="pi pi-pencil" class="p-2 flex justify-content-end" [style]="{ width: '2em', height: '2em' }" (onClick)="editar()"></p-button>
+        <p-button icon="pi pi-trash" class="p-2 flex justify-content-end" styleClass="p-button-danger" [style]="{ width: '2em', height: '2em' }" (onClick)="eliminar()"></p-button>
+    </div>
+</div>
